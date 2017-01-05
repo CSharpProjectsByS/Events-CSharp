@@ -8,15 +8,15 @@ namespace Zdarzenia
 {
     class ChangedArgs : EventArgs
     {
-        public List<String> names { get; set;  }
-        public List<String> newValues { get; set; }
-        public List<String> oldValues { get; set; }
+        public String propertyName;
+        public String oldValue;
+        public String newValue;
 
-        public ChangedArgs(List<String> names, List<String> newValues, List<String> oldValues)
+        public ChangedArgs(String propertyName, String oldValue, String newValue)
         {
-            this.names = names;
-            this.newValues = newValues;
-            this.oldValues = oldValues;
+            this.propertyName = propertyName;
+            this.oldValue = oldValue;
+            this.newValue = newValue;
         }
     }
 }

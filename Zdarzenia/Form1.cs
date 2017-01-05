@@ -13,15 +13,13 @@ namespace Zdarzenia
     public partial class Form1 : Form
     {
         private Gift gift;
-        private HandlerChangeProperties hChangeProperties;
 
         public Form1()
         {
             InitializeComponent();
 
-            gift = new Gift();
-            hChangeProperties = new HandlerChangeProperties(LogView, gift);
-            gift.ChangePropertyEvent += hChangeProperties.changePropertiesValuesAndLogIt;
+            gift = new Gift(LogView);
+
         }
 
         private void Value1ChangeButton_Click(object sender, EventArgs e)
@@ -30,7 +28,9 @@ namespace Zdarzenia
             String newValue2 = Value2TextBox.Text;
             String newValue3 = Value3TextBox.Text;
 
-            gift.changeProperties(newValue1, newValue2, newValue3);
+            gift.Value1 = newValue1;
+            gift.Value2 = newValue2;
+            gift.Value3 = newValue3;
         }
 
         private void ClearLogButton_Click(object sender, EventArgs e)

@@ -3,75 +3,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Zdarzenia
 {
     class Gift
     {
-        public String Value1 { get; set; }
-        public String Value2 { get; set; }
-        public String Value3 { get; set; }
+        private HandlerChangeProperties handlerChangeProperties;
+
+        private string value1;
+        private string value2;
+        private string value3;
+
+        public String Value1 {
+            get { return value1; }
+            
+            set
+            {
+                if (value1 != value)
+                {
+                    changeProperty("Value1", value1, value);
+                    value1 = value;
+                }
+            }
+        }
+        public String Value2
+        {
+            get { return value2; }
+
+            set
+            {
+                if (value2 != value)
+                {
+                    changeProperty("Value2", value2, value);
+                    value2 = value;
+                }
+            }
+        }
+        public String Value3
+        {
+            get { return value3; }
+
+            set
+            {
+                if (value3 != value)
+                {
+                    changeProperty("Value3", value3, value);
+                    value3 = value;
+                }
+            }
+        }
 
         public delegate void ChangePropertyDelegate(object oSender, ChangedArgs oEventArgs);
 
         public event ChangePropertyDelegate ChangePropertyEvent;
 
-        public Gift()
+        public Gift(ListBox logView)
         {
-            Value1 = "0";
-            Value2 = "0";
-            Value3 = "0";
+            value1 = "0";
+            value2 = "0";
+            value3 = "0";
+
+            handlerChangeProperties = new HandlerChangeProperties(logView);
+            ChangePropertyEvent = handlerChangeProperties.changePropertyValuesAndLogIt;
         }
 
-        public void changeProperties(String newValue1, String newValue2, String newValue3)
+        public void changeProperty(String propertyName, String oldValue, String newValue)
         {
-            List<String> names = prepareNameList();
-            List<String> oldValues = prepareOldValuesList();
-            List<String> newValues = prepareNewValuesList(newValue1, newValue2, newValue3);
-
-            ChangedArgs changedArgs = new ChangedArgs(names, newValues, oldValues);
-
+            ChangedArgs changedArgs = new ChangedArgs(propertyName, oldValue, newValue);
             onChangePropertyEvent(changedArgs);
         }
 
         public void onChangePropertyEvent(ChangedArgs changedArgs)
         {
-            if (ChangePropertyEvent != null)
+            ChangePropertyDelegate changePropertyEvent = ChangePropertyEvent;
+            if (changePropertyEvent != null)
             {
-                ChangePropertyEvent(this, changedArgs);
+                changePropertyEvent(this, changedArgs);
             }
         }
-
-        private List<String> prepareNameList()
-        {
-            List<String> names = new List<String>();
-            names.Add("Value1");
-            names.Add("Value2");
-            names.Add("Value3");
-
-            return names;
-        }
-
-        private List<String> prepareOldValuesList()
-        {
-            List<String> oldValuesList = new List<String>();
-            oldValuesList.Add(Value1);
-            oldValuesList.Add(Value2);
-            oldValuesList.Add(Value3);
-
-            return oldValuesList;
-        }
-
-        private List<String> prepareNewValuesList(String newValue1, String newValue2, String newValue3)
-        {
-            List<String> newValuesList = new List<String>();
-
-            newValuesList.Add(newValue1);
-            newValuesList.Add(newValue2);
-            newValuesList.Add(newValue3);
-
-            return newValuesList;
-        }
-
     }
 }
