@@ -1,0 +1,9 @@
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\bin\Debug\Zdarzenia.exe.config
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.csprojResolveAssemblyReference.cache
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.Form1.resources
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.Properties.Resources.resources
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.csproj.GenerateResource.Cache
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\bin\Debug\Zdarzenia.exe
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\bin\Debug\Zdarzenia.pdb
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.exe
+D:\Programowanie\VisualProjects\Zdarzenia\Zdarzenia\obj\Debug\Zdarzenia.pdb
